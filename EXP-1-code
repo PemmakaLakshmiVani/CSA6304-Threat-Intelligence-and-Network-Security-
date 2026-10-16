@@ -1,0 +1,24 @@
+def identify_threat(scenario):
+    scenario = scenario.lower()
+
+    if "bank" in scenario or "transaction" in scenario or "fraud" in scenario:
+        return "Banking Fraud Prevention"
+
+    elif "hospital" in scenario or "patient" in scenario or "medical" in scenario:
+        return "Healthcare Data Protection"
+
+    elif "online shopping" in scenario or "e-commerce" in scenario or "customer orders" in scenario:
+        return "E-commerce Fraud Prevention"
+
+    elif "network" in scenario or "server" in scenario or "cyberattack" in scenario:
+        return "Network Security Monitoring"
+
+    else:
+        return "General Cyber Threat Intelligence"
+
+
+scenario = input("Enter the business scenario: ")
+
+result = identify_threat(scenario)
+
+print("Threat Intelligence Application Area:", result)
