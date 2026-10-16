@@ -1,0 +1,28 @@
+def check_security_policy(document):
+    required_elements = {
+        "Scope": ["scope", "applies to", "coverage"],
+        "Roles and Responsibilities": ["roles", "responsibilities"],
+        "Enforcement": ["enforcement", "disciplinary action"],
+        "Review Cycle": ["review cycle", "review annually", "periodic review"],
+        "Approval Authority": ["approved by", "approval authority"]
+    }
+
+    document = document.lower()
+    missing = []
+
+    for element, keywords in required_elements.items():
+        if not any(keyword in document for keyword in keywords):
+            missing.append(element)
+
+    print("\nSecurity Policy Assessment Report")
+
+    if missing:
+        print("Missing Governance Elements:")
+        for element in missing:
+            print("-", element)
+    else:
+        print("All required governance elements are present.")
+
+
+policy = input("Enter the draft security policy document:\n")
+check_security_policy(policy)
