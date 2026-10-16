@@ -1,0 +1,52 @@
+from urllib.parse import urlparse
+import ipaddress
+
+def detect_phishing(url):
+    suspicious_words = [
+        "login", "verify", "update", "secure",
+        "account", "password", "free", "bank"
+    ]
+
+    score = 0
+    reasons = []
+
+    # Parse URL
+    parsed = urlparse(url if "://" in url else "http://" + url)
+    domain = parsed.hostname or ""
+
+    # Check suspicious keywords
+    if any(word in url.lower() for word in suspicious_words):
+        score += 1
+        reasons.append("Suspicious keywords found")
+
+    # Check IP-based domain
+    try:
+        ipaddress.ip_address(domain)
+        score += 1
+        reasons.append("IP address used as domain")
+    except ValueError:
+        pass
+
+    # Check excessive subdomains
+    if len(domain.split(".")) > 3:
+        score += 1
+        reasons.append("Excessive subdomains found")
+
+    # Display result
+    print("\nURL:", url)
+
+    if score >= 2:
+        print("Result: Suspicious / Potential Phishing URL")
+    elif score == 1:
+        print("Result: URL has warning indicators")
+    else:
+        print("Result: No listed phishing indicators detected")
+
+    if reasons:
+        print("Reasons:")
+        for reason in reasons:
+            print("-", reason)
+
+
+url = input("Enter a URL to check: ")
+detect_phishing(url)
