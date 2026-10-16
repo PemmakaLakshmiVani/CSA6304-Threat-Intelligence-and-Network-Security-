@@ -1,0 +1,65 @@
+import re
+from collections import Counter
+
+# Logstash-style: Parse raw log lines
+def parse_logs(log_lines):
+    events = []
+
+    for line in log_lines:
+        match = re.match(
+            r"(\S+)\s+(\S+)\s+(\S+)\s+(.*)", line
+        )
+
+        if match:
+            event = {
+                "timestamp": match.group(1),
+                "ip": match.group(2),
+                "level": match.group(3),
+                "message": match.group(4)
+            }
+            events.append(event)
+
+    return events
+
+
+# Elasticsearch-style: Index structured events
+def index_logs(events):
+    index = {}
+
+    for i, event in enumerate(events, start=1):
+        index[i] = event
+
+    return index
+
+
+# Kibana-style: Aggregate and display statistics
+def visualize_logs(index):
+    print("\n--- Log Dashboard ---")
+
+    level_counts = Counter(
+        event["level"] for event in index.values()
+    )
+
+    print("Total Logs:", len(index))
+    print("Logs by Level:")
+
+    for level, count in level_counts.items():
+        print(level, ":", count)
+
+
+# Sample raw log lines
+raw_logs = [
+    "2026-10-16T10:00:00 192.168.1.10 INFO User logged in",
+    "2026-10-16T10:01:00 192.168.1.20 ERROR Login failed",
+    "2026-10-16T10:02:00 192.168.1.10 INFO Page accessed",
+    "2026-10-16T10:03:00 192.168.1.30 WARNING Multiple login attempts"
+]
+
+# Execute ELK-style workflow
+events = parse_logs(raw_logs)
+print("Parsed Events:", events)
+
+index = index_logs(events)
+print("\nIndexed Logs:", index)
+
+visualize_logs(index)
