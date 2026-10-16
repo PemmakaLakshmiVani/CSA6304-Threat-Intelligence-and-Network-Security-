@@ -1,0 +1,33 @@
+# Define network segments
+segments = {
+    "Low-Trust": ["Guest WiFi", "Public Devices"],
+    "Medium-Trust": ["Employee Network"],
+    "Sensitive": ["Database Server", "Payment Server"]
+}
+
+# Define access policy
+access_policy = {
+    "Low-Trust": ["Low-Trust"],
+    "Medium-Trust": ["Medium-Trust"],
+    "Sensitive": ["Sensitive"]
+}
+
+# Check access between segments
+def check_access(source, destination):
+    if destination in access_policy[source]:
+        print("ACCESS ALLOWED:", source, "->", destination)
+    else:
+        print("ACCESS BLOCKED:", source, "->", destination)
+
+
+# Display network segments
+print("Network Segments:")
+for segment, devices in segments.items():
+    print(segment, ":", devices)
+
+# Simulate access attempts
+print("\nAccess Policy Testing:")
+check_access("Low-Trust", "Low-Trust")
+check_access("Low-Trust", "Sensitive")
+check_access("Medium-Trust", "Sensitive")
+check_access("Sensitive", "Sensitive")
