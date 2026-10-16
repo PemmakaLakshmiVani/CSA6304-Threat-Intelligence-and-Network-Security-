@@ -1,0 +1,24 @@
+def encrypt(data, key):
+    encrypted = ""
+    for i in range(len(data)):
+        encrypted += chr(ord(data[i]) ^ ord(key[i % len(key)]))
+    return encrypted
+
+
+def decrypt(data, key):
+    return encrypt(data, key)
+
+
+message = input("Enter the message to send: ")
+key = input("Enter the shared key: ")
+
+# Sender encrypts the message
+ciphertext = encrypt(message, key)
+print("\nEncrypted Data:", repr(ciphertext))
+
+# Attacker captures the encrypted data
+print("Captured Data (without key):", repr(ciphertext))
+
+# Receiver decrypts using the shared key
+decrypted = decrypt(ciphertext, key)
+print("Decrypted Message:", decrypted)
