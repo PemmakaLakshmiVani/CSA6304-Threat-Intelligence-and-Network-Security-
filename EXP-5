@@ -1,0 +1,29 @@
+def classify_report(description, audience):
+    text = (description + " " + audience).lower()
+
+    strategic = ["business leaders", "executives", "long-term",
+                 "business risk", "senior management", "trends"]
+
+    tactical = ["attack techniques", "tactics", "mitre att&ck",
+                "indicators of compromise", "ioc", "threat actors"]
+
+    operational = ["security analyst", "incident response",
+                   "ip address", "malware sample", "active attack",
+                   "immediate action"]
+
+    if any(word in text for word in strategic):
+        return "Strategic Intelligence"
+    elif any(word in text for word in tactical):
+        return "Tactical Intelligence"
+    elif any(word in text for word in operational):
+        return "Operational Intelligence"
+    else:
+        return "Classification Uncertain"
+
+
+description = input("Enter threat intelligence report description: ")
+audience = input("Enter intended audience: ")
+
+result = classify_report(description, audience)
+
+print("Report Classification:", result)
