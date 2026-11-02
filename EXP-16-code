@@ -1,0 +1,17 @@
+
+layers = ["Firewall", "IDS", "Antivirus", "Authentication"]
+
+attack_blocked = False
+
+for layer in layers:
+    print("Checking:", layer)
+
+    if layer == "IDS":
+        print("Attack detected and blocked")
+        attack_blocked = True
+        break
+
+if attack_blocked:
+    print("System Protected")
+else:
+    print("Attack Reached System")
