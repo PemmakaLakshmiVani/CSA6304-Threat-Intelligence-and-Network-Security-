@@ -1,0 +1,21 @@
+
+def identify_improvements(report):
+    report = report.lower()
+
+    areas = {
+        "patch management": ["patch", "update"],
+        "security awareness": ["awareness", "training"],
+        "monitoring": ["monitoring", "logs"],
+        "backup strategy": ["backup", "recovery"],
+        "access control": ["access control", "permissions"]
+    }
+
+    print("Improvement Areas:")
+
+    for area, keywords in areas.items():
+        if any(word in report for word in keywords):
+            print(area)
+
+
+report = input("Enter incident report: ")
+identify_improvements(report)
