@@ -1,0 +1,17 @@
+
+def classify_control(text):
+    text = text.lower()
+
+    if "policy" in text or "management" in text:
+        return "Organizational Controls"
+    elif "employee" in text or "training" in text:
+        return "People Controls"
+    elif "physical" in text or "building" in text:
+        return "Physical Controls"
+    elif "network" in text or "access" in text or "encryption" in text:
+        return "Technological Controls"
+    else:
+        return "Unknown Domain"
+
+control = input("Enter security control: ")
+print("Annex A Domain:", classify_control(control))
