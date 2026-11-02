@@ -1,0 +1,13 @@
+
+def assess_intelligence(context, confidence, actionable):
+    if context and confidence >= 70 and actionable:
+        print("Genuine Threat Intelligence")
+    else:
+        print("Raw Data / Incomplete Intelligence")
+
+
+context = input("Enter threat context: ")
+confidence = int(input("Enter confidence (0-100): "))
+actionable = input("Is it actionable? (yes/no): ").lower()
+
+assess_intelligence(context, confidence, actionable == "yes")
