@@ -1,0 +1,24 @@
+
+class StatefulFirewall:
+    def __init__(self):
+        self.connections = set()
+
+    def outbound(self, src_ip, dst_ip, src_port, dst_port):
+        connection = (src_ip, src_port, dst_ip, dst_port)
+        self.connections.add(connection)
+        print("Outbound connection allowed")
+
+    def inbound(self, src_ip, dst_ip, src_port, dst_port):
+        connection = (dst_ip, dst_port, src_ip, src_port)
+
+        if connection in self.connections:
+            print("Return traffic allowed")
+        else:
+            print("Unsolicited inbound packet blocked")
+
+
+fw = StatefulFirewall()
+
+fw.outbound("192.168.1.10", "8.8.8.8", 5000, 53)
+fw.inbound("8.8.8.8", "192.168.1.10", 53, 5000)
+fw.inbound("1.2.3.4", "192.168.1.10", 80, 4000)
