@@ -1,0 +1,16 @@
+
+def classify_alert(description):
+    text = description.lower()
+
+    if "ransomware" in text or "data breach" in text:
+        return "P1 - Critical"
+    elif "malware" in text or "brute force" in text:
+        return "P2 - High"
+    elif "suspicious login" in text or "port scan" in text:
+        return "P3 - Medium"
+    else:
+        return "P4 - Low"
+
+
+alert = input("Enter alert description: ")
+print("Priority:", classify_alert(alert))
