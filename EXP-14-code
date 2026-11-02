@@ -1,0 +1,32 @@
+
+# Step 1: Collect raw events
+events = [
+    {"ip": "192.168.1.5", "event": "failed_login"},
+    {"ip": "192.168.1.5", "event": "failed_login"},
+    {"ip": "192.168.1.5", "event": "failed_login"},
+    {"ip": "192.168.1.8", "event": "successful_login"}
+]
+
+# Step 2: Normalize events
+normalized = []
+
+for e in events:
+    normalized.append({
+        "source_ip": e["ip"],
+        "event_type": e["event"]
+    })
+
+# Step 3: Correlate events
+failed_logins = {}
+
+for e in normalized:
+    if e["event_type"] == "failed_login":
+        ip = e["source_ip"]
+        failed_logins[ip] = failed_logins.get(ip, 0) + 1
+
+# Step 4: Generate alerts
+print("SIEM Alerts:")
+
+for ip, count in failed_logins.items():
+    if count >= 3:
+        print("Alert: Brute force detected from", ip)
