@@ -1,0 +1,20 @@
+
+logs = [
+    "alice failed",
+    "alice failed",
+    "alice failed",
+    "alice success"
+]
+
+user = input("Enter username: ")
+failures = 0
+
+for log in logs:
+    if log.startswith(user):
+        if "failed" in log:
+            failures += 1
+        elif "success" in log and failures >= 3:
+            print("Brute Force Detected!")
+            break
+else:
+    print("No Brute Force Detected")
