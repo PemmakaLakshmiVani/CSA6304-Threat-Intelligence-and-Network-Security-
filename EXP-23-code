@@ -1,0 +1,19 @@
+
+whitelist = ["192.168.1.10"]
+signatures = ["malware", "attack", "exploit"]
+
+def inspect_traffic(ip, data):
+    if ip in whitelist:
+        print("Trusted Traffic Allowed")
+        return
+
+    for signature in signatures:
+        if signature in data.lower():
+            print("Threat Detected - Traffic Blocked")
+            return
+
+    print("Traffic Allowed")
+
+inspect_traffic("192.168.1.10", "malware attack")
+inspect_traffic("10.0.0.5", "malware detected")
+inspect_traffic("10.0.0.6", "normal traffic")
