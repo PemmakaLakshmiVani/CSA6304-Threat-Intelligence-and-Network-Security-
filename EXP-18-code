@@ -1,0 +1,23 @@
+
+import hashlib
+
+# Sample known malware hash database
+malicious_hashes = {
+    "5d41402abc4b2a76b9719d911017c592"
+}
+
+filename = input("Enter file name: ")
+
+try:
+    with open(filename, "rb") as file:
+        data = file.read()
+
+    file_hash = hashlib.md5(data).hexdigest()
+
+    if file_hash in malicious_hashes:
+        print("Malware Detected!")
+    else:
+        print("File is Safe")
+
+except FileNotFoundError:
+    print("File not found")
