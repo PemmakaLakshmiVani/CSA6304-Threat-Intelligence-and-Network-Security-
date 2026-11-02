@@ -1,0 +1,20 @@
+
+baseline = {
+    "firewall": True,
+    "antivirus": True,
+    "encryption": True,
+    "mfa": True
+}
+
+current = {
+    "firewall": True,
+    "antivirus": False,
+    "encryption": True,
+    "mfa": False
+}
+
+print("Failed Security Controls:")
+
+for control, required in baseline.items():
+    if required and not current.get(control, False):
+        print(control, "FAILED")
