@@ -1,0 +1,19 @@
+
+def classify_incident(text):
+    text = text.lower()
+
+    if "phishing" in text or "fake email" in text:
+        return "Phishing"
+    elif "unpatched" in text or "vulnerability" in text:
+        return "Unpatched Vulnerability"
+    elif "misconfiguration" in text or "incorrect settings" in text:
+        return "Misconfiguration"
+    elif "insider" in text or "employee" in text:
+        return "Insider Threat"
+    elif "vendor" in text or "supply chain" in text:
+        return "Supply-Chain Compromise"
+    else:
+        return "Unknown Root Cause"
+
+incident = input("Enter incident description: ")
+print("Root Cause:", classify_incident(incident))
