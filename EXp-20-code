@@ -1,0 +1,17 @@
+
+def classify_threat(text):
+    text = text.lower()
+
+    if "phishing" in text or "fake website" in text:
+        return "Phishing"
+    elif "ddos" in text or "flood" in text:
+        return "DoS/DDoS"
+    elif "malware" in text or "virus" in text:
+        return "Malware"
+    elif "intercept" in text or "man-in-the-middle" in text:
+        return "Man-in-the-Middle"
+    else:
+        return "Unknown Threat"
+
+description = input("Enter incident description: ")
+print("Threat Category:", classify_threat(description))
