@@ -1,0 +1,8 @@
+firewall = input("Firewall status: ")
+windows = input("Windows status: ")
+vpn = input("VPN status: ")
+
+if firewall == "Failed" and windows == "Failed" and vpn == "Failed":
+    print("Brute-Force Attack Detected")
+else:
+    print("No Attack")
