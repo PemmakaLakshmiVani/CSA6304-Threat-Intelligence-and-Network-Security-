@@ -1,0 +1,9 @@
+ip = input("Enter IP address: ")
+port = int(input("Enter port: "))
+
+if port == 80:
+    print("Allowed")
+elif port == 22:
+    print("Blocked")
+else:
+    print("Blocked by Default")
