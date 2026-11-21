@@ -1,0 +1,9 @@
+required = ["read", "write"]
+user = ["read", "write", "delete"]
+
+extra = set(user) - set(required)
+
+if extra:
+    print("Excess Access:", extra)
+else:
+    print("Access is Correct")
