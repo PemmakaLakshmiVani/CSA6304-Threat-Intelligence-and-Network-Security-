@@ -1,0 +1,12 @@
+confidentiality = input("Confidentiality (True/False): ")
+integrity = input("Integrity (True/False): ")
+availability = input("Availability (True/False): ")
+
+if confidentiality == "False":
+    print("Confidentiality Violated")
+
+if integrity == "False":
+    print("Integrity Violated")
+
+if availability == "False":
+    print("Availability Violated")
