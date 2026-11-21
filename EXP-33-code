@@ -1,0 +1,16 @@
+action = input("Enter action: ").lower()
+
+if "prepare" in action:
+    print("Preparation")
+elif "detect" in action or "identify" in action:
+    print("Identification")
+elif "isolate" in action:
+    print("Containment")
+elif "remove" in action:
+    print("Eradication")
+elif "restore" in action:
+    print("Recovery")
+elif "review" in action:
+    print("Lessons Learned")
+else:
+    print("Unknown Phase")
