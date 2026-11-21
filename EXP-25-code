@@ -1,0 +1,19 @@
+records = [
+    {"hash": "A123", "previous": "START", "time": 10},
+    {"hash": "B456", "previous": "A123", "time": 20},
+    {"hash": "C789", "previous": "B456", "time": 30}
+]
+
+valid = True
+
+for i in range(len(records)):
+    if i > 0:
+        if records[i]["previous"] != records[i-1]["hash"]:
+            valid = False
+        if records[i]["time"] < records[i-1]["time"]:
+            valid = False
+
+if valid:
+    print("Valid Evidence Chain")
+else:
+    print("Evidence Chain Broken")
