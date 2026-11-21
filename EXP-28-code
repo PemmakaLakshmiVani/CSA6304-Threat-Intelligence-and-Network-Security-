@@ -1,0 +1,7 @@
+ip = input("Enter IP address: ")
+count = int(input("Enter request count: "))
+
+if count > 100:
+    print("Possible DoS Attack")
+else:
+    print("Normal Traffic")
