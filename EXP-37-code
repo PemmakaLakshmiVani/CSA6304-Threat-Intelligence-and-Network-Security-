@@ -1,0 +1,7 @@
+events = ["Success", "Success", "Failed", "Failed", "Failed"]
+
+for event in events:
+    if event == "Failed":
+        print("Login Anomaly Detected")
+    else:
+        print("Normal Login")
