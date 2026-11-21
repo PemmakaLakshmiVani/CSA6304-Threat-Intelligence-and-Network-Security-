@@ -1,0 +1,8 @@
+file_hash = input("Enter file hash: ")
+api = input("Enter API name: ")
+behavior = input("Enter behavior: ")
+
+if api == "CreateProcess" or behavior == "Suspicious":
+    print("Malware Detected")
+else:
+    print("No Suspicious Activity")
