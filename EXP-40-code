@@ -1,0 +1,12 @@
+task = input("Enter security task: ").lower()
+
+if "packet" in task or "network" in task:
+    print("Wireshark")
+elif "vulnerability" in task:
+    print("Nessus")
+elif "intrusion" in task:
+    print("Snort")
+elif "log" in task:
+    print("Splunk")
+else:
+    print("No Tool Found")
