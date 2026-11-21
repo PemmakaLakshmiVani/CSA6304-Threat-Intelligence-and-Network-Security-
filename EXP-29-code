@@ -1,0 +1,10 @@
+incident = input("Enter incident: ")
+
+if incident == "Malware":
+    print("Isolate System")
+elif incident == "Data Breach":
+    print("Block Unauthorized Access")
+elif incident == "Network Attack":
+    print("Block Malicious IP")
+else:
+    print("Monitor Incident")
