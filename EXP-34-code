@@ -1,0 +1,9 @@
+data = ["Suspicious IP", "Malware", "Normal Login"]
+
+styles = ["hypothesis", "intelligence", "analytics"]
+
+for style in styles:
+    print(style, "Hunting Started")
+    for item in data:
+        if item == "Suspicious IP":
+            print("Threat Found")
